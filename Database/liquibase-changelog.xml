@@ -1,0 +1,243 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet author="root (generated)" id="1711015137622-1">
+        <createTable tableName="batch">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="Batch_ID" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Quantity" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Cost_Price" type="FLOAT(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Sell_Price" type="FLOAT(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Production_Date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Expire_Date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Purchase_ID" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Medicine_ID" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Supplier_ID" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="root (generated)" id="1711015137622-2">
+        <createTable tableName="bill_information">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="Invoice_No" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Total_Amount" type="FLOAT(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Discount" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Discount_Amount" type="FLOAT(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Total_Payable" type="FLOAT(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Paid" type="FLOAT(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Returned" type="FLOAT(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Date" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="root (generated)" id="1711015137622-3">
+        <createTable tableName="category">
+            <column autoIncrement="true" name="ID" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="Category" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="root (generated)" id="1711015137622-4">
+        <createTable tableName="drug_generic_name">
+            <column autoIncrement="true" name="ID" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="Generic_Name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="root (generated)" id="1711015137622-5">
+        <createTable tableName="manufacturer">
+            <column autoIncrement="true" name="ID" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="Manufacturer_Name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="root (generated)" id="1711015137622-6">
+        <createTable tableName="medicine_information">
+            <column autoIncrement="true" name="ID" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="Medicine_Name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Category" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Generic_ID" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Manufacturer_ID" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Category_ID" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="root (generated)" id="1711015137622-7">
+        <createTable tableName="supplier">
+            <column autoIncrement="true" name="ID" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="Supplier_Name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Contact" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Email" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="root (generated)" id="1711015137622-8">
+        <createTable tableName="user_access">
+            <column name="Username" type="VARCHAR(25)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="Password" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Usertype" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="root (generated)" id="1711015137622-9">
+        <createTable tableName="user_information">
+            <column autoIncrement="true" name="ID" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="Name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Email" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Gender" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Date_of_Birth" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Age" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Address" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Contact" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Blood_Group" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Marital_Status" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Join_Date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Salary" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Username" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="root (generated)" id="1711015137622-10">
+        <createIndex indexName="Category_ID" tableName="medicine_information">
+            <column name="Category_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="root (generated)" id="1711015137622-11">
+        <createIndex indexName="Generic_ID" tableName="medicine_information">
+            <column name="Generic_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="root (generated)" id="1711015137622-12">
+        <createIndex indexName="Manufacturer_ID" tableName="medicine_information">
+            <column name="Manufacturer_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="root (generated)" id="1711015137622-13">
+        <createIndex indexName="Medicine_ID" tableName="batch">
+            <column name="Medicine_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="root (generated)" id="1711015137622-14">
+        <createIndex indexName="Supplier_ID" tableName="batch">
+            <column name="Supplier_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="root (generated)" id="1711015137622-15">
+        <createIndex indexName="Username" tableName="user_information">
+            <column name="Username"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="root (generated)" id="1711015137622-16">
+        <addForeignKeyConstraint baseColumnNames="Supplier_ID" baseTableName="batch" constraintName="batch_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ID" referencedTableName="supplier" validate="true"/>
+    </changeSet>
+    <changeSet author="root (generated)" id="1711015137622-17">
+        <addForeignKeyConstraint baseColumnNames="Medicine_ID" baseTableName="batch" constraintName="batch_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ID" referencedTableName="medicine_information" validate="true"/>
+    </changeSet>
+    <changeSet author="root (generated)" id="1711015137622-18">
+        <addForeignKeyConstraint baseColumnNames="Generic_ID" baseTableName="medicine_information" constraintName="medicine_information_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ID" referencedTableName="drug_generic_name" validate="true"/>
+    </changeSet>
+    <changeSet author="root (generated)" id="1711015137622-19">
+        <addForeignKeyConstraint baseColumnNames="Manufacturer_ID" baseTableName="medicine_information" constraintName="medicine_information_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ID" referencedTableName="manufacturer" validate="true"/>
+    </changeSet>
+    <changeSet author="root (generated)" id="1711015137622-20">
+        <addForeignKeyConstraint baseColumnNames="Category_ID" baseTableName="medicine_information" constraintName="medicine_information_ibfk_3" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ID" referencedTableName="category" validate="true"/>
+    </changeSet>
+    <changeSet author="root (generated)" id="1711015137622-21">
+        <addForeignKeyConstraint baseColumnNames="Username" baseTableName="user_information" constraintName="user_information_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="Username" referencedTableName="user_access" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
