@@ -26,5 +26,5 @@ steps:
   inputs:
     scanlocation: '$(Build.SourcesDirectory)'
     configtype: 'predefined'
-    predefinedconfigfile: 'GitleaksUdmCombo.toml'
+    predefinedconfigfile: 'UDMSecretChecksv8.toml'
     reportformat: 'json'
