@@ -28,4 +28,12 @@ steps:
     configtype: 'predefined'
     predefinedconfigfile: 'UDMSecretChecksv8.toml'
     reportformat: 'sarif'
+    #reportpath: '$(Build.SourcesDirectory)/gitleaks-report.sarif'
   displayName: 'GitLeaks Scan for Secrets'
+  
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Build.SourcesDirectory)/gitleaks-report.sarif'  # Path to the generated report
+    artifact: 'GitleaksReport'  # Name of the artifact
+    publishLocation: 'pipeline'
+  displayName: 'Publish GitLeaks Report'
