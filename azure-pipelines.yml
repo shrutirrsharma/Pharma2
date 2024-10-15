@@ -6,8 +6,10 @@
 trigger:
 - main
 
-pool:
-  vmImage: windows-latest
+pool: 
+  name: default
+  demands: agent.name
+  vmImage: 'windows-latest'
 
 steps:
 - task: NodeTool@0
