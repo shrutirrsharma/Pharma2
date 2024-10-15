@@ -20,4 +20,12 @@ steps:
 - script: |
     npm install
     npm run build
-  displayName: 'npm install and build'
+  displayName: 'npm install and build'    
+
+- task: Gitleaks@2
+  inputs:
+    scanlocation: '$(Build.SourcesDirectory)'
+    configtype: 'predefined'
+    predefinedconfigfile: 'UDMSecretChecksv8.toml'
+    reportformat: 'sarif'
+  displayName: 'GitLeaks Scan for Secrets'
