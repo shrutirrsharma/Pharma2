@@ -24,7 +24,9 @@ steps:
 
 - task: Gitleaks@2
   inputs:
-    scanlocation: '$(Build.SourcesDirectory)'
+    scanlocation: '$(Build.SourcesDirectory)/app.js'
     configtype: 'predefined'
     predefinedconfigfile: 'UDMSecretChecksv8.toml'
     reportformat: 'json'
+    #reportpath: '$(Build.SourcesDirectory)/gitleaks-report.json'
+  displayName: 'GitLeak Scan for app.js'
