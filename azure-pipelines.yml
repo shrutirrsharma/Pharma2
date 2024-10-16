@@ -22,26 +22,10 @@ steps:
     npm run build
   displayName: 'npm install and build'    
 
-# - task: Gitleaks@2
-#   inputs:
-#     scanlocation: '$(Build.SourcesDirectory)/app.js'
-#     configtype: 'predefined'
-#     predefinedconfigfile: 'UDMSecretChecksv8.toml'
-#     reportformat: 'json'
-#     #reportpath: '$(Build.SourcesDirectory)/gitleaks-report.json'
-#   displayName: 'GitLeak Scan for app.js'
-
-- script: |
-    echo "Running GitLeaks Scan"
-    gitleaks detect --config=$(Build.SourcesDirectory)/UDMSecretChecksv8.toml --source=$(Build.SourcesDirectory) --report-format=json --report-path=$(Build.SourcesDirectory)/gitleaks-report.json
-    if [ $? -eq 99 ]; then
-      echo "Leaks found, but pipeline will continue."
-    else
-      exit $?
-    fi
-  displayName: 'GitLeaks Scan for Secrets'
-  
-- script: |
-    echo "Displaying GitLeaks Report:"
-    cat $(Build.SourcesDirectory)/gitleaks-report.json
-  displayName: 'Display GitLeaks Report in Logs'
+- task: Gitleaks@2
+  inputs:
+    scanlocation: '$(Build.SourcesDirectory)'
+    configtype: 'predefined'
+    predefinedconfigfile: 'UDMSecretChecksv8.toml'
+    reportformat: 'json'
+  displayName: 'GitLeak Scan'
