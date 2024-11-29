@@ -1,19 +1,26 @@
 trigger:
-- main
+  - main
 
-pool: 
-  name: default
-  demands: agent.name
+pool:
+  name: Default
+  demands: agent.name -equals agent-pod
   vmImage: 'ubuntu-latest'
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '20.x'
-  displayName: 'Install Node.js'
+stages:
+  - stage: Nodejs
+    displayName: Set Up NodeJs
+    jobs:
+      - job:
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSource: 'spec'
+              versionSpec: '16.x'
+              checkLatest: true
+            displayName: 'Set Up NodeJS'
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'    
+          - script: npm install
+            displayName: 'Install Dependencies'
 
+          - script: npm run build
+            displayName: 'Build Project'
