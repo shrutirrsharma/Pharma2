@@ -24,3 +24,25 @@ stages:
 
           - script: npm run build
             displayName: 'Build Project'
+
+  - stage: SonarQube_Analysis
+    displayName: Code Quality Test
+    jobs:
+      - job: 
+        steps:
+          - task: SonarQubePrepare@7
+            inputs:
+              SonarQube: 'SonarQube'
+              scannerMode: 'cli'
+              configMode: 'manual'
+              cliProjectKey: 'Practice1_Practice1_54448cfd-937a-4c3c-bd91-7348822ab3e3'
+              cliProjectName: 'Pharmacy'
+              cliSources: '.'
+
+          - task: SonarQubeAnalyze@7
+            inputs:
+              jdkversion: 'JAVA_HOME_17_X64'
+
+          - task: SonarQubePublish@7
+            inputs:
+              pollingTimeoutSec: '300'
